@@ -1,5 +1,6 @@
 import random
 from django.template.loader import render_to_string
+from django.utils.encoding import smart_bytes
 
 
 def readonly_dashboard(application):
@@ -16,6 +17,6 @@ def readonly_dashboard(application):
                 'back_url': environ.get('HTTP_REFERER',
                                         'http://demo.getsaleor.com')}
             page = render_to_string('dashboard/read_only_splash.html', ctx)
-            return [str(page)]
+            return [smart_bytes(page)]
         return application(environ, start_response)
     return wrapper
