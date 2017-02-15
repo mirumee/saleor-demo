@@ -1,165 +1,21 @@
-<!DOCTYPE html>
-{% load staticfiles i18n %}
-{% load render_bundle from webpack_loader %}
+{% extends 'dashboard/base_original.html' %}
 
-<html lang="{{ LANGUAGE_CODE }}" class="no-js">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+{% block meta %}
+{{ block.super }}
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    <title>{% block title %}{% trans "Dashboard - Saleor" context "Dashboard default page title"  %}{% endblock %}</title>
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-10159761-19', 'auto');
+  ga('send', 'pageview');
+</script>
+{% endblock meta %}
 
-      ga('create', 'UA-10159761-19', 'auto');
-      ga('send', 'pageview');
-    </script>
-    {% render_bundle 'vendor' 'css' %}
-    {% render_bundle 'dashboard' 'css' %}
-    <link rel="stylesheet" type="text/css" href="{% static "versatileimagefield/css/versatileimagefield.css" %}">
-
-    {% block custom_css %}
-    {% endblock %}
-</head>
-
-<body class="{% block body_class %}body-home{% endblock %}">
-    <header>
-      <nav class="top-nav">
-        <div class="nav-wrapper">
-          <div class="right">
-            <ul id="user-action" class="dropdown-content">
-              <li class="user-name">{{ request.user }}</li>
-              <li class="divider"></li>
-              <li><a href="/" target="_blank" class="waves-effect waves-teal">
-                  {% trans "Visit storefront" context "Dashboard top navigation action" %}
-              </a></li>
-              <li><a href="{% url 'account_logout' %}" class="waves-effect waves-teal">
-                  {% trans "Log out" context "Dashboard top navigation action" %}
-              </a></li>
-            </ul>
-            <a class="dropdown-button" data-constrainwidth="false" href="#" data-activates="user-action"><i class="material-icons">account_circle</i><i class="mdi-navigation-arrow-drop-down right"></i></a>
-            {% if SEARCH_IS_ENABLED %}
-              <a href="{% url "dashboard:search" %}" class="hide-on-med-and-up dropdown-button"><i class="material-icons">search</i></a>
-            {% endif %}
-          </div>
-          <ul class="side-nav" id="main-nav">
-            <li class="nav-home"><a href="{% url 'dashboard:index' %}">
-                {% trans "Home" context "Dashboard side navigation link" %}
-            </a></li>
-            <li class="side-nav-section" id="first">
-              <p>{% trans "Catalogue" context "Dashboard side navigation title" %}</p>
-              <ul>
-                <li class="{% block menu_products_class %}{% endblock %}"><a href="{% url 'dashboard:product-list' %}">
-                        {% trans "Products" context "Dashboard side navigation link" %}
-                </a></li>
-                <li class="{% block menu_categories_class %}{% endblock %}"><a href="{% url 'dashboard:category-list' %}">
-                    {% trans "Categories" context "Dashboard side navigation link" %}
-                </a></li>
-                <li class="{% block menu_location_class %}{% endblock %}"><a href="{% url 'dashboard:product-stock-location-list' %}">
-                    {% trans "Stock locations" context "Dashboard side navigation link" %}
-                </a></li>
-              </ul>
-            </li>
-            <li class="side-nav-section">
-              <p>{% trans "Discounts" context "Dashboard side navigation title" %}</p>
-              <ul>
-                <li class="{% block menu_sales_class %}{% endblock %}"><a href="{% url 'dashboard:sale-list' %}">
-                    {% trans "Sales" context "Dashboard side navigation link" %}
-                </a></li>
-                <li class="{% block menu_vouchers_class %}{% endblock %}"><a href="{% url 'dashboard:voucher-list' %}">
-                    {% trans "Vouchers" context "Dashboard side navigation link" %}</a></li>
-              </ul>
-            </li>
-            <li class="side-nav-section">
-              <p>{% trans "Sales" context "Dashboard side navigation title. `Sales' is noun of to sell" %}</p>
-              <ul>
-                <li class="{% block menu_orders_class %}{% endblock %}"><a href="{% url 'dashboard:orders' %}">
-                    {% trans "Orders" %}
-                </a></li>
-                <li class="{% block menu_customers_class %}{% endblock %}"><a href="{% url 'dashboard:customers' %}">
-                    {% trans "Customers" context "Dashboard side navigation link" %}
-                </a></li>
-                <li class="{% block menu_payments_class %}{% endblock %}"><a href="{% url 'dashboard:payments' %}">
-                    {% trans "Payments" context "Dashboard side navigation link" %}
-                </a></li>
-              </ul>
-            </li>
-            <li class="side-nav-section">
-              <p>{% trans "Configuration"  context "Dashboard side navigation title" %}</p>
-              <ul>
-                <li class="{% block menu_product_classes_class %}{% endblock %}"><a href="{% url 'dashboard:product-class-list' %}">
-                    {% trans "Product types" context "Dashboard side navigation link" %}</a></li>
-                <li class="{% block menu_attributes_class %}{% endblock %}"><a href="{% url 'dashboard:product-attributes' %}">
-                    {% trans "Attributes" context "Dashboard side navigation link" %}</a></li>
-                <li class="{% block menu_delivery_class %}{% endblock %}"><a href="{% url 'dashboard:shipping-methods' %}">
-                    {% trans "Shipping methods" context "Dashboard side navigation link" %}</a></li>
-                <li class="{% block menu_settings_class %}{% endblock %}"><a href="{% url 'dashboard:site-index' %}">
-                    {% trans "Site settings" context "Dashboard side navigation link" %}</a></li>
-              </ul>
-            </li>
-          </ul>
-          <ul>
-            <li class="menu-toggle">
-              <ul class="left">
-                <li><a href="#" id="open-menu" class="show-on-large"><i class="material-icons">menu</i></a></li>
-                <li><a href="#" id="close-menu" class="show-on-large hide"><i class="material-icons">clear</i></a></li>
-                <li><a href="{% url 'dashboard:index' %}" class="logo">
-                  <img src="{% static "img/dashboard-logo.svg" %}" alt="Saleor">
-                </a></li>
-                <li class="search">
-                  {% if SEARCH_IS_ENABLED %}
-                    <form method="get" action="{% url "dashboard:search" %}" class="hide-on-small-only">
-                        <div class="input-field">
-                            <input id="search" type="search" class="validate" placeholder="{% trans "Order, product, customer" context "Dashboard search placeholder" %}" name="q" value="{% if query %}{{ query }}{% endif %}">
-                            <button type="submit" class="right search-icon">
-                                <i class="material-icons">search</i>
-                            </button>
-                        </div>
-                    </form>
-                  {% endif %}
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </header>
-
-    <div class="subheader top-nav">
-      <div class="nav-wrapper container">
-        {% block breadcrumbs %}
-          <ul class="breadcrumbs">
-              <li class="visible-s"><a href="#">{% trans "Home" context "Dashboard homepage breadcrumbs" %}</a></li>
-          </ul>
-        {% endblock %}
-        {% block header_extra %}{% endblock %}
-      </div>
-    </div>
-
-    <main class="main">
-        <div class="container">
-            <div class="row">
-              <div class="card-panel readonly-msg">Dashboard runs in read only mode.</div>
-            </div>
-            {% block content %}
-            {% endblock %}
-        </div>
-    </main>
-
-    <div class="hide-on-med-only"></div>
-    <div class="hide-on-large-only"></div>
-    <div id="base-modal" class="modal"></div>
-    <div id="base-modal-fixed" class="modal modal-fixed-footer"></div>
-
-    <!-- Core Scripts - Include with every page -->
-    {% render_bundle 'vendor' 'js' %}
-    {% render_bundle 'dashboard' 'js' %}
-    <script src="{% static "versatileimagefield/js/versatileimagefield.js" %}"></script>
-    {% include "dashboard/includes/_messages.html" %}
-
-    {% block custom_js %}{% endblock %}
-</body>
-</html>
+{% block content %}
+<div class="row">
+  <div class="card-panel readonly-msg">Dashboard runs in read only mode.</div>
+</div>
+{{ block.super }}
+{% endblock %}
