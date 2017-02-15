@@ -1,4 +1,4 @@
-{% extends 'dashboard/base_original.html' %}
+{% extends 'base_original.html' %}
 
 {% block meta %}
 {{ block.super }}
@@ -12,10 +12,3 @@
   ga('send', 'pageview');
 </script>
 {% endblock meta %}
-
-{% block content %}
-<div class="row">
-  <div class="card-panel readonly-msg">Dashboard runs in read only mode.</div>
-</div>
-{{ block.super }}
-{% endblock %}
