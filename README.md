@@ -1,8 +1,8 @@
 [![<See Saleor's demo>](http://getsaleor.com/mr-saleor-live-demo-readme.png)](http://demo.getsaleor.com)
 
 
-Saleor — Live demo deployment
-========================
+Saleor's live demo
+==================
 
 Try out Saleor
 ---------
