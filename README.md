@@ -4,9 +4,6 @@
 Saleor's live demo
 ==================
 
-Try out Saleor
----------
-
 [See homepage](http://demo.getsaleor.com/)
 
 [See dashboard](http://demo.getsaleor.com/dashboard/)
