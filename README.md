@@ -7,9 +7,9 @@ Saleor's live demo
 Try out Saleor
 ---------
 
-[See live demo homepage](http://demo.getsaleor.com/)
+[See homepage](http://demo.getsaleor.com/)
 
-[See live demo dashboard](http://demo.getsaleor.com/dashboard/)
+[See dashboard](http://demo.getsaleor.com/dashboard/)
 
 Login credentials: `admin@example.com`/`admin`
 
