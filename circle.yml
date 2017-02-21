@@ -8,6 +8,10 @@ dependencies:
   override:
     - pip install docker-cloud
 
+test:
+  override:
+    - echo "Saleor demo deployment. No tests."
+
 deployment:
   release:
     branch: master
