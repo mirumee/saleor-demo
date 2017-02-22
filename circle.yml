@@ -14,7 +14,7 @@ deployment:
   release:
     branch: master
     commands:
-      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - docker login -e $DOCKERCLOUD_EMAIL -u $DOCKERCLOUD_USER -p $DOCKERCLOUD_PASS
       - docker build -t mirumee/saleor-demo:$CIRCLE_SHA1 -t mirumee/saleor-demo:latest .
       - docker push mirumee/saleor-demo:$CIRCLE_SHA1
       - docker push mirumee/saleor-demo:latest
