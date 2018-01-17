@@ -4,6 +4,7 @@ COPY wsgi/ /app/saleor/wsgi/
 RUN mv /app/templates/base.html /app/templates/base_original.html
 RUN mv /app/templates/dashboard/base.html /app/templates/dashboard/base_original.html
 COPY templates/ /app/templates/
+COPY cleardb.py /app/saleor/core/management/commands/
 
 EXPOSE 8000
 ENV PORT 8000
