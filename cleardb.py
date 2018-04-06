@@ -13,7 +13,7 @@ from saleor.discount.models import Sale, Voucher
 from saleor.order.models import Order, Payment
 from saleor.product.models import Product
 from saleor.shipping.models import ShippingMethod
-from saleor.userprofile.models import User
+from saleor.account.models import User
 
 
 class Command(BaseCommand):
