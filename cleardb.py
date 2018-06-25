@@ -8,7 +8,7 @@ from __future__ import unicode_literals
 
 from django.core.management.base import BaseCommand
 
-from saleor.cart.models import Cart
+from saleor.checkout.models import Cart
 from saleor.discount.models import Sale, Voucher
 from saleor.order.models import Order, Payment
 from saleor.product.models import Product
