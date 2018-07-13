@@ -1,0 +1,19 @@
+branch-defaults:
+  master:
+    environment: saleor-demo
+environment-defaults:
+  saleor-demo:
+    branch: null
+    repository: null
+global:
+  application_name: saleor-demo
+  default_ec2_keyname: saleor-demo
+  default_platform: null
+  default_region: eu-west-1
+  include_git_submodules: true
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  profile: null
+  sc: git
+  workspace_type: Application

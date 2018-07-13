@@ -1,0 +1,19 @@
+version: 2
+jobs:
+  deploy:
+    docker:
+      - image: circleci/python:3.6-stretch
+    steps:
+      - checkout
+      - run: |
+          sudo pip install awsebcli
+          eb deploy saleor-demo
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - deploy:
+          filters:
+              branches:
+                only:
+                  - master
