@@ -10,7 +10,8 @@ from django.core.management.base import BaseCommand
 
 from saleor.checkout.models import Cart
 from saleor.discount.models import Sale, Voucher
-from saleor.order.models import Order, Payment
+from saleor.order.models import Order
+from saleor.payment.models import Transaction, Payment
 from saleor.product.models import Product
 from saleor.shipping.models import ShippingMethod
 from saleor.account.models import User
@@ -22,6 +23,9 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         Cart.objects.all().delete()
         self.stdout.write('Removed carts')
+
+        Transaction.objects.all().delete()
+        self.stdout.write('Removed transactions')
 
         Payment.objects.all().delete()
         self.stdout.write('Removed payments')
