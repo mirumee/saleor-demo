@@ -1,6 +1,3 @@
-[![<See Saleor's demo>](http://getsaleor.com/mr-saleor-live-demo-readme.png)](http://demo.getsaleor.com)
-
-
 Saleor's live demo
 ==================
 
